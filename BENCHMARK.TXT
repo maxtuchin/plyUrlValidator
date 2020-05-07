@@ -1,0 +1,13 @@
+mkgen: 100 000; PoE=0,36
+4278277 function calls (4276922 primitive calls) in 4.792 seconds
+
+input file: 100 000 urls with PoE=0,36
+
+re:
+562010 function calls (561970 primitive calls) in 0.692 seconds
+
+smc:
+36202627 function calls (36202607 primitive calls) in 26.874 seconds
+
+ply:
+6480452 function calls (6480223 primitive calls) in 7.453 seconds

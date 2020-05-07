@@ -1,0 +1,100 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> url
+Rule 1     url -> SCHEMA DOMAIN secondaryDomains TLD
+Rule 2     secondaryDomains -> DOMAIN secondaryDomains
+Rule 3     secondaryDomains -> empty
+Rule 4     empty -> <empty>
+
+Terminals, with rules where they appear
+
+DOMAIN               : 1 2
+SCHEMA               : 1
+TLD                  : 1
+error                : 
+
+Nonterminals, with rules where they appear
+
+empty                : 3
+secondaryDomains     : 1 2
+url                  : 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . url
+    (1) url -> . SCHEMA DOMAIN secondaryDomains TLD
+
+    SCHEMA          shift and go to state 1
+
+    url                            shift and go to state 2
+
+state 1
+
+    (1) url -> SCHEMA . DOMAIN secondaryDomains TLD
+
+    DOMAIN          shift and go to state 3
+
+
+state 2
+
+    (0) S' -> url .
+
+
+
+state 3
+
+    (1) url -> SCHEMA DOMAIN . secondaryDomains TLD
+    (2) secondaryDomains -> . DOMAIN secondaryDomains
+    (3) secondaryDomains -> . empty
+    (4) empty -> .
+
+    DOMAIN          shift and go to state 6
+    TLD             reduce using rule 4 (empty -> .)
+
+    secondaryDomains               shift and go to state 4
+    empty                          shift and go to state 5
+
+state 4
+
+    (1) url -> SCHEMA DOMAIN secondaryDomains . TLD
+
+    TLD             shift and go to state 7
+
+
+state 5
+
+    (3) secondaryDomains -> empty .
+
+    TLD             reduce using rule 3 (secondaryDomains -> empty .)
+
+
+state 6
+
+    (2) secondaryDomains -> DOMAIN . secondaryDomains
+    (2) secondaryDomains -> . DOMAIN secondaryDomains
+    (3) secondaryDomains -> . empty
+    (4) empty -> .
+
+    DOMAIN          shift and go to state 6
+    TLD             reduce using rule 4 (empty -> .)
+
+    secondaryDomains               shift and go to state 8
+    empty                          shift and go to state 5
+
+state 7
+
+    (1) url -> SCHEMA DOMAIN secondaryDomains TLD .
+
+    $end            reduce using rule 1 (url -> SCHEMA DOMAIN secondaryDomains TLD .)
+
+
+state 8
+
+    (2) secondaryDomains -> DOMAIN secondaryDomains .
+
+    TLD             reduce using rule 2 (secondaryDomains -> DOMAIN secondaryDomains .)
+
