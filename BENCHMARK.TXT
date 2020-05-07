@@ -11,3 +11,5 @@ smc:
 
 ply:
 6480452 function calls (6480223 primitive calls) in 7.453 seconds
+
+# P.S. Done via cprofilev
